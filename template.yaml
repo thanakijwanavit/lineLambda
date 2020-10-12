@@ -7,11 +7,18 @@ Globals:
   Function:
     Timeout: 3
     Runtime: python3.8
+Parameters:
+  LINEACCESSKEY: 
+    Type: String
+    Default: None
 
 Resources:
   SendLineFunction:
     Type: AWS::Serverless::Function 
     Properties:
+      Environment:
+        Variables:
+          LINEACCESSKEY: !Ref LINEACCESSKEY
       CodeUri: line/
       Handler: app.sendLine
       MemorySize: 128
