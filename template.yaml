@@ -1,0 +1,23 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  lineLambda
+
+Globals:
+  Function:
+    Timeout: 3
+    Runtime: python3.8
+
+Resources:
+  SendLineFunction:
+    Type: AWS::Serverless::Function 
+    Properties:
+      CodeUri: line/
+      Handler: app.sendLine
+      MemorySize: 128
+      FunctionName: send-line
+
+Outputs:
+  SendLine:
+    Description: 'send line function'
+    Value: !Ref SendLineFunction
